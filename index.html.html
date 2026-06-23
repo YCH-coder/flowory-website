@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowory | Move With Purpose</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1F6F5F',
+                        secondary: '#FFFCF2',
+                        soft: '#DCEFEA',
+                        textDark: '#333333',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans TC', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #FFFCF2; color: #333333; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        html { scroll-behavior: smooth; }
+        #chat-window { transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <nav class="fixed w-full z-50 bg-secondary/80 backdrop-blur-md px-6 py-4 flex justify-between items-center">
+        <img src="https://github.com/YCH-coder/flowory-assets/blob/main/ChatGPT_Image_2026%E5%B9%B45%E6%9C%8820%E6%97%A5_%E4%B8%8B%E5%8D%8802_48_47-removebg-preview.png?raw=true" alt="Flowory Logo" class="h-10">
+        <div class="hidden md:flex space-x-8 font-medium text-textDark">
+            <a href="#shoes" class="hover:text-primary transition">球鞋商品</a>
+            <a href="#courses" class="hover:text-primary transition">運動課程</a>
+            <a href="#faq" class="hover:text-primary transition">常見問題</a>
+        </div>
+        <button class="bg-primary text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition">聯絡我們</button>
+    </nav>
+
+    <section class="h-screen relative flex items-center justify-center overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=2000" class="absolute inset-0 w-full h-full object-cover brightness-75" alt="Hero">
+        <div class="relative z-10 text-center text-white px-4">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">Move With Purpose</h1>
+            <p class="text-lg md:text-xl mb-10 opacity-90">專業運動鞋與運動課程，陪伴你找到最自在的運動節奏。</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#shoes" class="bg-primary px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition duration-300">Explore Shoes</a>
+                <a href="#courses" class="bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition duration-300">Explore Courses</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
+        <div class="text-center p-8 bg-soft rounded-2xl">
+            <h3 class="text-2xl font-bold text-primary mb-4">Performance</h3>
+            <p>專業運動科技，為您的訓練提供強大支撐，突破極限。</p>
+        </div>
+        <div class="text-center p-8 bg-soft rounded-2xl">
+            <h3 class="text-2xl font-bold text-primary mb-4">Lifestyle</h3>
+            <p>極簡設計理念，完美融入您的日常生活與城市步調。</p>
+        </div>
+        <div class="text-center p-8 bg-soft rounded-2xl">
+            <h3 class="text-2xl font-bold text-primary mb-4">Community</h3>
+            <p>專業社群陪伴，讓我們在運動的道路上一起持續成長。</p>
+        </div>
+    </section>
+
+    <section id="shoes" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-4">Find Your Perfect Fit</h2>
+            <p class="text-center text-gray-500 mb-12">從日常訓練到專業運動，找到最適合你的鞋款。</p>
+            <div id="shoes-grid" class="grid md:grid-cols-3 gap-8"></div>
+        </div>
+    </section>
+
+    <script>
+        const shoes = [
+            {name: "Urban Run", desc: "城市慢跑鞋", price: "NT$3,680", img: "https://github.com/YCH-coder/flowory-assets/blob/main/shoes/URBAN.png?raw=true"},
+            {name: "Power Lift", desc: "重訓穩定鞋", price: "NT$4,280", img: "https://github.com/YCH-coder/flowory-assets/blob/main/shoes/Power%20Lift.png?raw=true"},
+            {name: "Cycle Pro", desc: "飛輪訓練鞋", price: "NT$3,980", img: "https://github.com/YCH-coder/flowory-assets/blob/main/shoes/CYCLE.png?raw=true"},
+            {name: "Cloud Cushion", desc: "高緩震跑鞋", price: "NT$4,580", img: "https://github.com/YCH-coder/flowory-assets/blob/main/shoes/Cloud%20Cushion.png?raw=true"},
+            {name: "Feather Light", desc: "輕量訓練鞋", price: "NT$3,280", img: "https://github.com/YCH-coder/flowory-assets/blob/main/shoes/Feather%20Light.png?raw=true"},
+            {name: "AllFit X", desc: "全方位訓練鞋", price: "NT$4,680", img: "https://github.com/YCH-coder/flowory-assets/blob/main/shoes/AllFit%20X.png?raw=true"}
+        ];
+        const grid = document.getElementById('shoes-grid');
+        grid.innerHTML = shoes.map(shoe => `
+            <div class="group bg-gray-50 rounded-2xl overflow-hidden hover:shadow-xl transition duration-500">
+                <img src="${shoe.img}" alt="${shoe.name}" class="w-full h-64 object-cover group-hover:scale-105 transition duration-500 bg-white">
+                <div class="p-6">
+                    <span class="text-sm text-primary font-bold tracking-widest">PERFORMANCE</span>
+                    <h4 class="text-xl font-bold mt-2">${shoe.name}</h4>
+                    <p class="text-gray-600 mb-4">${shoe.desc}</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-lg">${shoe.price}</span>
+                        <button class="border border-primary text-primary px-4 py-2 rounded-full hover:bg-primary hover:text-white transition">查看詳情</button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    </script>
+
+    <section id="courses" class="py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-4">Train Better Together</h2>
+            <div class="grid md:grid-cols-3 gap-8 mt-12">
+                <div class="rounded-2xl overflow-hidden glass-card shadow-sm hover:shadow-md transition">
+                    <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&q=80&w=800" class="h-48 w-full object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Yoga Flow</h3>
+                        <p class="text-gray-600 mb-4">提升柔軟度與核心穩定，找回身心靈的平衡。</p>
+                        <button class="w-full bg-primary text-white py-3 rounded-xl hover:opacity-90 transition">立即報名</button>
+                    </div>
+                </div>
+                <div class="rounded-2xl overflow-hidden glass-card shadow-sm hover:shadow-md transition">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800" class="h-48 w-full object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Power Training</h3>
+                        <p class="text-gray-600 mb-4">專業教練帶領，建立肌力與體態管理。</p>
+                        <button class="w-full bg-primary text-white py-3 rounded-xl hover:opacity-90 transition">立即報名</button>
+                    </div>
+                </div>
+                <div class="rounded-2xl overflow-hidden glass-card shadow-sm hover:shadow-md transition">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800" class="h-48 w-full object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Cycle Energy</h3>
+                        <p class="text-gray-600 mb-4">高燃脂飛輪課程，釋放壓力與提升心肺能力。</p>
+                        <button class="w-full bg-primary text-white py-3 rounded-xl hover:opacity-90 transition">立即報名</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-20 bg-soft/50">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <details class="bg-white p-6 rounded-2xl shadow-sm">
+                    <summary class="font-bold cursor-pointer outline-none">如何選擇適合自己的鞋款？</summary>
+                    <p class="mt-4 text-gray-600">可依照運動類型與需求選擇，或透過 Flowory 跑步測驗獲得推薦。</p>
+                </details>
+                <details class="bg-white p-6 rounded-2xl shadow-sm">
+                    <summary class="font-bold cursor-pointer outline-none">商品多久出貨？</summary>
+                    <p class="mt-4 text-gray-600">付款完成後 1-3 個工作天內出貨。</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-gray-900 text-white text-center">
+        <img src="https://github.com/YCH-coder/flowory-assets/blob/main/ChatGPT_Image_2026%E5%B9%B45%E6%9C%8820%E6%97%A5_%E4%B8%8B%E5%8D%8802_48_47-removebg-preview.png?raw=true" alt="Logo" class="h-12 mx-auto brightness-0 invert mb-6">
+        <p class="mb-4 text-gray-400">© 2026 Flowory Official Website. All Rights Reserved.</p>
+    </footer>
+
+    <!-- AI Chatbot UI -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button id="chat-toggle" class="bg-primary p-4 rounded-full shadow-lg hover:scale-110 transition duration-300 text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            </svg>
+        </button>
+        
+        <div id="chat-window" class="hidden absolute bottom-20 right-0 w-80 md:w-96 bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
+            <div class="bg-primary p-4 text-white font-bold flex justify-between items-center">
+                <span>Flowory AI 運動顧問</span>
+                <button id="close-chat" class="hover:opacity-75">✕</button>
+            </div>
+            <div id="chat-messages" class="h-80 overflow-y-auto p-4 space-y-4 bg-gray-50 text-sm">
+                <div class="bg-soft p-3 rounded-lg rounded-bl-none text-gray-700">Hi，我是 Flowory AI 運動顧問 👋 請問您想了解鞋款、課程，還是商品推薦呢？</div>
+            </div>
+            <div class="p-4 border-t flex">
+                <input type="text" id="chat-input" class="flex-1 border rounded-l-lg p-2 outline-none" placeholder="輸入您的問題...">
+                <button id="send-btn" class="bg-primary text-white px-4 rounded-r-lg hover:bg-opacity-90">發送</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const faqData = {
+            "鞋": "Flowory 提供了好多不同功能的鞋款喔！Urban Run 適合日常慢跑，Cloud Cushion 則是緩震王者，適合長距離跑者～ 如果是重訓，Power Lift 會是您的好幫手！飛輪選 Cycle Pro，輕量靈活選 Feather Light，多元訓練則推 AllFit X 呢。不知道怎麼選的話，試試看我們的跑步測驗吧～",
+            "跑步新手": "跑步新手呀？沒問題的喔！建議從 Urban Run 或 Cloud Cushion 開始嘗試呢。Urban Run 比較輕透舒適，Cloud Cushion 則是緩震感很好，能幫您減輕很多落地衝擊唷～",
+            "膝蓋": "Cloud Cushion 可是我們的緩震明星喔！能很有效地幫您吸收落地衝擊，保護膝蓋呢～ 如果持續感到不適，也記得要多休息並搭配適當的課程安排喔。",
+            "power lift": "Power Lift 是為了重訓設計的，穩定性很棒喔！若是您的運動內容比較多元，AllFit X 會是您的全能夥伴呢～看您平常比較喜歡做什麼運動來決定吧！",
+            "課程": "Flowory 目前有三種很棒的課程喔！Yoga Flow 可以找回平衡，Power Training 建立肌力，Cycle Energy 則是燃脂超有效呢！每種都很適合不同程度的您唷～",
+            "減脂": "想減脂呀？我個人很推薦 Cycle Energy 飛輪課程呢！心肺提升和燃脂效果都很厲害喔～ 如果能搭配一點重訓課程維持肌肉量，效果會更好唷！",
+            "出貨": "下單後付款完成，我們通常會在 1-3 個工作天內就幫您出貨喔！物流狀態可能會有小誤差，再請您稍等一下下呢～",
+            "退貨": "收到商品後的 7 天內，如果需要退換貨都是可以的喔！若是換貨，再麻煩先聯繫客服確認一下庫存，我們一定會幫您協助處理到好的～",
+            "優惠券": "在結帳頁面輸入優惠碼就可以折抵了呢！不過記得要注意一下使用期限和條件喔～ 若是透過跑步測驗拿到的優惠，結帳時輸入就可以囉！",
+            "請假": "可以的喔！如果需要請假，請在課程開始前的 24 小時提出申請呢。請假成功後，資格會保留，您可以再找時間補課唷！",
+            "補課": "有補課機制喔！請好假後，只要在課程期限內預約其他空位就可以補課了呢～ 每堂課有限制補課一次喔，如果有不懂的都可以隨時問我唷！"
+        };
+
+        const chatToggle = document.getElementById('chat-toggle');
+        const chatWindow = document.getElementById('chat-window');
+        const closeChat = document.getElementById('close-chat');
+        const sendBtn = document.getElementById('send-btn');
+        const chatInput = document.getElementById('chat-input');
+        const chatMessages = document.getElementById('chat-messages');
+
+        chatToggle.onclick = () => chatWindow.classList.remove('hidden');
+        closeChat.onclick = () => chatWindow.classList.add('hidden');
+
+        function appendMessage(text, isUser) {
+            const div = document.createElement('div');
+            div.className = isUser ? "text-right" : "";
+            div.innerHTML = `<div class="${isUser ? 'bg-primary text-white' : 'bg-soft text-gray-700'} inline-block p-3 rounded-lg ${isUser ? 'rounded-br-none' : 'rounded-bl-none'} text-sm">${text}</div>`;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        sendBtn.onclick = () => {
+            const val = chatInput.value.trim();
+            if(!val) return;
+            appendMessage(val, true);
+            chatInput.value = '';
+            
+            setTimeout(() => {
+                let response = "呀... 這個問題我目前還查不到相關資訊呢～ 不好意思喔！請您直接聯繫我們的人工客服，會比較清楚唷！";
+                for(let key in faqData) {
+                    if(val.includes(key)) { response = faqData[key]; break; }
+                }
+                appendMessage(response, false);
+            }, 500);
+        };
+    </script>
+</body>
+</html>
